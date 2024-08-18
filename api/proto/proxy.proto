@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = ".;api";
+
+service Proxy {
+    rpc Get(GetRequest) returns (GetResponse) {}
+}
+
+message Video {
+    string link = 1;
+}
+
+message GetRequest {
+    repeated Video videos = 1;
+}
+
+message GetResponse {
+    map<string, string> info = 1;
+    string error = 2;
+}
